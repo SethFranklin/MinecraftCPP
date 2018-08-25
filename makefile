@@ -1,6 +1,6 @@
 
 CC=g++
-CC_FLAGS=-Wall
+CC_FLAGS=-Wall -Werror
 LD_FLAGS=`sdl2-config --cflags --libs` -lSDL2 -lGL -lGLEW
  
 EXEC=build/minecraft
@@ -9,6 +9,7 @@ OBJECTS=$(SOURCES:.cpp=.o)
 
 $(EXEC): $(OBJECTS)
 	$(CC) $(OBJECTS) $(LD_FLAGS) -o $(EXEC)
+	./$(EXEC)
  
 %.o: %.cpp
 	$(CC) $(CC_FLAGS) -c $< -o $@ $(LD_FLAGS)
